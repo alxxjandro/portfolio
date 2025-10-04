@@ -11,13 +11,29 @@ h4 {
   background-color: #f9fafb;
 }
 
-.code--compact {
-  display: none;
+.header {
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.headerh1 {
+  min-width: 460px;
+  text-align: center;
 }
 
 .cardWrapper {
+  max-width: 500px;
+  min-width: 420px;
+  flex: 1;
   position: relative;
   display: inline-block;
+}
+
+.code--compact {
+  display: none;
 }
 
 .headerCard {
@@ -60,15 +76,6 @@ h4 {
   z-index: -2;
   animation: rotateCardLeft 8s ease-in-out infinite;
   background-color: #22c55e5b;
-}
-
-.header {
-  padding: 2rem 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 1rem;
 }
 
 .custom-type-animation-cursor,
@@ -128,8 +135,69 @@ h4 {
   border-radius: 6px;
 }
 .comment {
-  color: #6b7280; /* gris verdoso apagado */
+  color: #6b7280;
   font-style: italic;
+}
+
+.subHeader {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: lighter;
+  color: #12883e;
+  text-align: center;
+}
+
+/* Custom Button */
+.customButton {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.7rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.customButton.primary {
+  background-color: #16a34a;
+  color: #ffffff;
+  border: 2px solid transparent;
+}
+
+.customButton.primary:hover {
+  background-color: #ffffff;
+  color: #16a34a;
+  border: 2px solid #16a34a;
+  transform: translateY(-2px);
+}
+
+.customButton.secondary {
+  background-color: #ffffff;
+  color: #16a34a;
+  border: 2px solid #16a34a;
+}
+
+.customButton.secondary:hover {
+  background-color: #16a34a;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.customButton.ghost {
+  background-color: transparent;
+  color: #16a34a;
+  border: none;
+}
+
+.customButton.ghost:hover {
+  text-decoration: underline;
+}
+
+.headerActions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .keyword {
@@ -205,12 +273,27 @@ h4 {
   .code--compact {
     display: block;
   }
+  .header {
+    gap: 2rem;
+    flex-direction: column; /* apila headerh1 y cardWrapper */
+  }
+
+  .headerh1,
+  .cardWrapper {
+    border: solid 2px red;
+
+    width: 330px;
+    min-width: auto;
+    box-sizing: border-box;
+  }
+
   .headerh1 {
+    border: solid 2px red; /* solo para debug visual */
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
   }
+
   .headerh1 > span:first-child {
     font-size: 1.4rem;
   }

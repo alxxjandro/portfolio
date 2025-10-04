@@ -21,23 +21,11 @@ const HeaderCard = () => {
             <span className="operator">=</span>{' '}
             <span className="brace">{'{'}</span>
             <div className="objects">
-              <Object object="nickName" description="loncho" comma={true} />
+              <Object object="name" description="Alonso" comma={true} />
+              <Object object="isStudent" description="true" comma={true} />
               <Object
                 object="favoriteRole"
                 description="Frontend Developer"
-                comma={true}
-              />
-              <Object object="isStudent" description="true" comma={true} />
-              <Object
-                object="skillset"
-                description={[
-                  'React',
-                  'Ts/Js',
-                  'Node.js',
-                  'C++',
-                  'Python',
-                  'SQL',
-                ]}
                 comma={true}
               />
               <Object
@@ -45,17 +33,12 @@ const HeaderCard = () => {
                 description={['web-dev', 'mobile', 'design']}
                 comma={true}
               />
-              <Object
-                object="learning"
-                description={['spring', 'express', 'ci/cd']}
-                comma={true}
-              />
+              <Object object="favoriteFood" description="pasta" comma={true} />
               <Object
                 object="hobbies"
                 description={['running', 'cooking', 'coding']}
-                comma={true}
+                comma={false}
               />
-              <Object object="favoriteFood" description="pasta" comma={false} />
             </div>
             <span className="brace">{'}'}</span>
           </div>
@@ -69,16 +52,11 @@ const HeaderCard = () => {
             <span className="operator">=</span>{' '}
             <span className="brace">{'{'}</span>
             <div className="objects">
-              <Object object="nickName" description="loncho" comma={true} />
-              <Object
-                object="favoriteRole"
-                description="Frontend Dev"
-                comma={true}
-              />
+              <Object object="name" description="Alonso" comma={true} />
               <Object object="isStudent" description="true" comma={true} />
               <Object
-                object="skills"
-                description={['React', 'TS', 'C++']}
+                object="favoriteRole"
+                description="Frontend"
                 comma={true}
               />
               <Object
@@ -86,17 +64,12 @@ const HeaderCard = () => {
                 description={['web-dev', 'design']}
                 comma={true}
               />
-              <Object
-                object="learning"
-                description={['backend', 'mobile']}
-                comma={true}
-              />
+              <Object object="favoriteFood" description="pasta" comma={true} />
               <Object
                 object="hobbies"
                 description={['running', 'coding']}
-                comma={true}
+                comma={false}
               />
-              <Object object="favoriteFood" description="pasta" comma={false} />
             </div>
             <span className="brace">{'}'}</span>
           </div>
