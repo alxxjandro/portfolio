@@ -44,6 +44,18 @@ h4 {
   flex: 1;
 }
 
+button,
+.actionBtn svg,
+.themeToggle svg {
+  color: #000;
+  transition: color 0.2s ease;
+}
+
+body.dark .actionBtn svg,
+body.dark .themeToggle svg {
+  color: #e5e7eb;
+}
+
 .actionBtn > button {
   padding: 0 !important;
 }
@@ -414,6 +426,10 @@ body.dark .fileTextColor {
 }
 
 @media (max-width: 640px) {
+  body {
+    height: 100vh;
+  }
+
   .greenline {
     width: 90vw;
   }
