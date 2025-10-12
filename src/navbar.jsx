@@ -26,7 +26,9 @@ const Navbar = () => {
       <div className="navbarContent">
         <div className="actionBtn">
           <button className="themeToggle">
-            <PiGithubLogoFill size={22} />
+            <a href="https://github.com/alxxjandro" target="_blank">
+              <PiGithubLogoFill size={22} />
+            </a>
           </button>
         </div>
         <div>
