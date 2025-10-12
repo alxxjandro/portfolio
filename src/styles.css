@@ -8,11 +8,61 @@ h4 {
   padding: 0;
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #f9fafb;
+}
+
+.mainNavbar {
+  padding: 1rem 0 0 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center !important;
+  height: 5%;
+}
+
+.navbarContent {
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.navbarContent > div > button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font-size: 0.9rem;
+  transition: all 0.1s ease;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  padding: 0.2rem 0.8rem;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+.actionBtn > button {
+  padding: 0 !important;
+}
+
+.navbarContent > div > button:hover {
+  color: #16a34a;
+  transform: translate(0px, -1px);
+}
+
+.greenline {
+  border: solid 1px #16a34a97;
+  border-radius: 16px;
+  width: 70vw;
 }
 
 .header {
+  height: 80vh;
   padding: 2rem;
+  gap: 1rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -125,6 +175,7 @@ h4 {
 
 .fileTextColor {
   color: #757575;
+  background-color: transparent;
 }
 .code {
   font-family: 'Roboto Mono', monospace;
@@ -149,7 +200,6 @@ h4 {
 
 /* Custom Button */
 .customButton {
-  flex: 1;
   font-size: 1rem;
   font-weight: 500;
   padding: 0.7rem 1.4rem;
@@ -168,7 +218,7 @@ h4 {
   background-color: #ffffff;
   color: #16a34a;
   border: 2px solid #16a34a;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .customButton.secondary {
@@ -180,7 +230,7 @@ h4 {
 .customButton.secondary:hover {
   background-color: #16a34a;
   color: #ffffff;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 
 .customButton.ghost {
@@ -205,7 +255,7 @@ h4 {
 }
 
 .variable {
-  color: #15803d;
+  color: #012987;
 }
 
 .operator {
@@ -221,7 +271,104 @@ h4 {
 }
 
 .string {
-  color: #127f73;
+  color: #186e64;
+}
+
+.themeToggle:hover {
+  transform: translateY(-2px);
+}
+
+/* --- Dark Mode --- */
+body.dark {
+  background-color: rgb(31, 41, 55);
+  color: #e5e7eb;
+}
+
+body.dark .headerCard {
+  background-color: rgb(31, 41, 55);
+  border-color: #374151;
+}
+
+body.dark .headerCard:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 10px rgba(22, 197, 94, 0.2);
+}
+
+body.dark .greenline {
+  border-color: #22c55e;
+}
+
+body.dark .subHeader,
+body.dark .custom-type-animation-cursor,
+body.dark .typing {
+  color: #22c55e;
+}
+
+body.dark .customButton.primary {
+  border-color: #22c55e;
+  background-color: #22c55e;
+}
+
+body.dark .customButton.primary:hover {
+  color: #22c55e;
+  background-color: transparent;
+}
+
+body.dark .customButton.secondary {
+  background-color: transparent;
+  color: #22c55e;
+  border-color: #22c55e;
+}
+
+body.dark .customButton.secondary:hover {
+  background-color: #22c55e;
+  color: #fff;
+}
+
+body.dark .navbarContent > div > button {
+  color: #e5e7eb;
+}
+
+body.dark .navbarContent > div > button:hover {
+  color: #22c55e;
+}
+
+body.dark .code {
+  color: #d1d5db;
+  background-color: transparent;
+}
+
+body.dark .comment {
+  color: #6b7280;
+  font-style: italic;
+}
+
+body.dark .keyword {
+  color: #4ade80;
+}
+
+body.dark .variable {
+  color: #22d3ee;
+}
+
+body.dark .operator {
+  color: #a3e635;
+}
+
+body.dark .brace {
+  color: #86efac;
+}
+
+body.dark .property {
+  color: #34d399;
+}
+
+body.dark .string {
+  color: #4ade80;
+}
+
+body.dark .fileTextColor {
+  color: #9ca3af;
 }
 
 @keyframes cursor {
@@ -267,6 +414,9 @@ h4 {
 }
 
 @media (max-width: 640px) {
+  .greenline {
+    width: 90vw;
+  }
   .code--full {
     display: none;
   }
@@ -274,21 +424,19 @@ h4 {
     display: block;
   }
   .header {
+    height: auto;
     gap: 2rem;
-    flex-direction: column; /* apila headerh1 y cardWrapper */
+    flex-direction: column;
   }
 
   .headerh1,
   .cardWrapper {
-    border: solid 2px red;
-
     width: 330px;
     min-width: auto;
     box-sizing: border-box;
   }
 
   .headerh1 {
-    border: solid 2px red; /* solo para debug visual */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -296,5 +444,54 @@ h4 {
 
   .headerh1 > span:first-child {
     font-size: 1.4rem;
+  }
+}
+@media (max-width: 768px) {
+  .navbarContent {
+    width: 95vw;
+    gap: 0.4rem;
+  }
+
+  .navbarContent > div > button {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .themeToggle {
+    font-size: 1rem;
+  }
+
+  .actionBtn > button {
+    padding: 0 !important;
+  }
+
+  .greenline {
+    width: 95vw;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbarContent {
+    width: 100vw;
+    gap: 0.2rem;
+  }
+
+  .navbarContent > div > button {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.45rem;
+  }
+
+  .greenline {
+    width: 95vw;
+  }
+
+  .themeToggle svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .actionBtn > button svg {
+    width: 18px;
+    height: 18px;
   }
 }

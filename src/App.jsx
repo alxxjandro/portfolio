@@ -1,6 +1,7 @@
 import HeaderCard from './headerCard'
 import { TypeAnimation } from 'react-type-animation'
 import CustomButton from './customButton'
+import Navbar from './navbar'
 import './styles.css'
 
 const App = () => {
@@ -8,6 +9,7 @@ const App = () => {
 
   return (
     <>
+      <Navbar />
       <div className="header">
         <h1>
           <div className="headerh1">

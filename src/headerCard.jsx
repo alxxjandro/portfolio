@@ -75,7 +75,6 @@ const HeaderCard = () => {
           </div>
         </div>
       </div>
-
       <div className="headerCardBgOne"></div>
       <div className="headerCardBgTwo"></div>
     </div>
