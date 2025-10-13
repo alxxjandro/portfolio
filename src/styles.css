@@ -1,3 +1,6 @@
+/* =========================================================
+    BASE / RESET
+   ========================================================= */
 body,
 p,
 h1,
@@ -10,14 +13,25 @@ h4 {
   font-family: 'Roboto', sans-serif;
 }
 
+/* =========================================================
+    NAVBAR
+   ========================================================= */
 .mainNavbar {
   padding: 1rem 0 0 0;
   display: flex;
-  gap: 0.5rem;
   flex-direction: column;
   align-items: center;
   justify-content: center !important;
+  gap: 0.5rem;
   height: 5%;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+}
+
+body.dark .mainNavbar {
+  background-color: #1f2937;
 }
 
 .navbarContent {
@@ -31,10 +45,15 @@ h4 {
   border: none;
   background-color: transparent;
   font-size: 0.9rem;
-  transition: all 0.1s ease;
   border: solid 1px transparent;
   border-radius: 4px;
   padding: 0.2rem 0.8rem;
+  transition: all 0.1s ease;
+}
+
+.navbarContent > div > button:hover {
+  color: #16a34a;
+  transform: translate(0px, -1px);
 }
 
 .actionBtn {
@@ -42,6 +61,10 @@ h4 {
   align-items: center;
   justify-content: center;
   flex: 1;
+}
+
+.actionBtn > button {
+  padding: 0 !important;
 }
 
 button,
@@ -56,29 +79,24 @@ body.dark .themeToggle svg {
   color: #e5e7eb;
 }
 
-.actionBtn > button {
-  padding: 0 !important;
-}
-
-.navbarContent > div > button:hover {
-  color: #16a34a;
-  transform: translate(0px, -1px);
-}
-
 .greenline {
   border: solid 1px #16a34a97;
   border-radius: 16px;
   width: 70vw;
 }
 
+/* =========================================================
+    HEADER (Hero Section + Card)
+   ========================================================= */
 .header {
-  height: 80vh;
+  height: 85vh;
   padding: 2rem;
   gap: 1rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .headerh1 {
@@ -86,16 +104,13 @@ body.dark .themeToggle svg {
   text-align: center;
 }
 
+/* --- Header Card --- */
 .cardWrapper {
   max-width: 500px;
   min-width: 420px;
   flex: 1;
   position: relative;
   display: inline-block;
-}
-
-.code--compact {
-  display: none;
 }
 
 .headerCard {
@@ -114,42 +129,7 @@ body.dark .themeToggle svg {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
-.headerCardBgOne {
-  opacity: 0.5;
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 20px;
-  z-index: 1;
-  animation: rotateCardRight 8s ease-in-out infinite;
-  background-color: #22c55e3f;
-}
-
-.headerCardBgTwo {
-  opacity: 0.5;
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  right: -8px;
-  bottom: -8px;
-  border-radius: 20px;
-  z-index: -2;
-  animation: rotateCardLeft 8s ease-in-out infinite;
-  background-color: #22c55e5b;
-}
-
-.custom-type-animation-cursor,
-.typing {
-  color: #16a34a;
-}
-
-.custom-type-animation-cursor::after {
-  content: '|';
-  animation: cursor 1.2s infinite alternate-reverse;
-}
-
+/* --- Card navbar buttons (like code window dots) --- */
 .navbar {
   display: flex;
   align-items: center;
@@ -183,12 +163,39 @@ body.dark .themeToggle svg {
   background-color: rgb(85, 197, 70);
 }
 
-/* code section */
+/* --- Card background animations --- */
+.headerCardBgOne {
+  opacity: 0.5;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 20px;
+  z-index: 1;
+  animation: rotateCardRight 8s ease-in-out infinite;
+  background-color: #22c55e3f;
+}
 
+.headerCardBgTwo {
+  opacity: 0.5;
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 20px;
+  z-index: -2;
+  animation: rotateCardLeft 8s ease-in-out infinite;
+  background-color: #22c55e5b;
+}
+
+/* --- Code text inside card --- */
 .fileTextColor {
   color: #757575;
   background-color: transparent;
 }
+
 .code {
   font-family: 'Roboto Mono', monospace;
   font-size: 14px;
@@ -197,20 +204,165 @@ body.dark .themeToggle svg {
   padding: 0.5rem;
   border-radius: 6px;
 }
+
+.code--compact {
+  display: none;
+}
+
 .comment {
   color: #6b7280;
   font-style: italic;
 }
 
-.subHeader {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: lighter;
-  color: #12883e;
-  text-align: center;
+.keyword {
+  color: #166534;
 }
 
-/* Custom Button */
+.variable {
+  color: #012987;
+}
+
+.operator {
+  color: #22c55e;
+}
+
+.brace {
+  color: #22c55e;
+}
+
+.property {
+  color: #16a34a;
+}
+
+.string {
+  color: #186e64;
+}
+
+/* =========================================================
+    TYPE ANIMATION
+   ========================================================= */
+.custom-type-animation-cursor,
+.typing {
+  color: #22c55e;
+}
+
+.custom-type-animation-cursor::after {
+  content: '|';
+  animation: cursor 1.2s infinite alternate-reverse;
+}
+
+/* =========================================================
+    TECH STACK SECTION
+   ========================================================= */
+.techWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1.5rem;
+  padding-top: 3rem;
+  margin-bottom: 16rem;
+  gap: 1rem;
+}
+
+.techHeader {
+  max-width: 600px;
+}
+
+.techHeader h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.techHeader h1 span {
+  color: #22c55e;
+}
+
+.techHeader p {
+  font-size: 1rem;
+  color: #374151;
+  margin-top: 0.3rem;
+  line-height: 1.5;
+}
+
+.greenDivider {
+  margin: 1rem auto 0;
+  width: 70px;
+  height: 3px;
+  background-color: #22c55e;
+  border-radius: 10px;
+  animation: pulseLine 2s infinite alternate;
+}
+
+/* --- Tech Cards --- */
+.techStackContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.9rem;
+  margin-top: 3rem;
+  max-width: 70vw;
+}
+
+.stackCard {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.stackCard:hover {
+  transform: translateY(-3px);
+  border-color: #22c55e;
+  box-shadow: 0 4px 10px rgba(22, 197, 94, 0.2);
+}
+
+.stackCard h3 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: #166534;
+}
+
+.stackIcons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+}
+
+.iconWrapper svg {
+  width: 32px;
+  height: 32px;
+  color: #16a34a;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.iconWrapper:hover svg {
+  transform: translateY(-4px);
+  color: #22c55e;
+}
+
+.iconWrapper p {
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: #374151;
+}
+
+/* =========================================================
+    BUTTONS / TEXT ELEMENTS
+   ========================================================= */
 .customButton {
   font-size: 1rem;
   font-weight: 500;
@@ -262,35 +414,21 @@ body.dark .themeToggle svg {
   margin-top: 1.5rem;
 }
 
-.keyword {
-  color: #166534;
-}
-
-.variable {
-  color: #012987;
-}
-
-.operator {
+.subHeader {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  font-weight: lighter;
   color: #22c55e;
-}
-
-.brace {
-  color: #22c55e;
-}
-
-.property {
-  color: #16a34a;
-}
-
-.string {
-  color: #186e64;
+  text-align: center;
 }
 
 .themeToggle:hover {
   transform: translateY(-2px);
 }
 
-/* --- Dark Mode --- */
+/* =========================================================
+    DARK MODE
+   ========================================================= */
 body.dark {
   background-color: rgb(31, 41, 55);
   color: #e5e7eb;
@@ -310,9 +448,42 @@ body.dark .greenline {
   border-color: #22c55e;
 }
 
-body.dark .subHeader,
-body.dark .custom-type-animation-cursor,
-body.dark .typing {
+body.dark .techHeader h1 {
+  color: #e5e7eb;
+}
+
+body.dark .techHeader p {
+  color: #9ca3af;
+}
+
+body.dark .greenDivider {
+  background-color: #22c55e;
+}
+
+body.dark .stackCard {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+body.dark .stackCard:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 10px rgba(22, 197, 94, 0.15);
+}
+
+body.dark .stackCard h3,
+body.dark .iconWrapper svg {
+  color: #22c55e;
+}
+
+body.dark .iconWrapper p {
+  color: #e5e7eb;
+}
+
+body.dark .navbarContent > div > button {
+  color: #e5e7eb;
+}
+
+body.dark .navbarContent > div > button:hover {
   color: #22c55e;
 }
 
@@ -337,22 +508,8 @@ body.dark .customButton.secondary:hover {
   color: #fff;
 }
 
-body.dark .navbarContent > div > button {
-  color: #e5e7eb;
-}
-
-body.dark .navbarContent > div > button:hover {
-  color: #22c55e;
-}
-
 body.dark .code {
   color: #d1d5db;
-  background-color: transparent;
-}
-
-body.dark .comment {
-  color: #6b7280;
-  font-style: italic;
 }
 
 body.dark .keyword {
@@ -383,6 +540,9 @@ body.dark .fileTextColor {
   color: #9ca3af;
 }
 
+/* =========================================================
+    ANIMACIONES
+   ========================================================= */
 @keyframes cursor {
   50% {
     opacity: 0;
@@ -425,43 +585,20 @@ body.dark .fileTextColor {
   }
 }
 
-@media (max-width: 640px) {
-  body {
-    height: 100vh;
+@keyframes pulseLine {
+  from {
+    opacity: 0.5;
+    transform: scaleX(0.8);
   }
-
-  .greenline {
-    width: 90vw;
-  }
-  .code--full {
-    display: none;
-  }
-  .code--compact {
-    display: block;
-  }
-  .header {
-    height: auto;
-    gap: 2rem;
-    flex-direction: column;
-  }
-
-  .headerh1,
-  .cardWrapper {
-    width: 330px;
-    min-width: auto;
-    box-sizing: border-box;
-  }
-
-  .headerh1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .headerh1 > span:first-child {
-    font-size: 1.4rem;
+  to {
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
+
+/* =========================================================
+    MEDIA QUERIES
+   ========================================================= */
 @media (max-width: 768px) {
   .navbarContent {
     width: 95vw;
@@ -483,6 +620,47 @@ body.dark .fileTextColor {
 
   .greenline {
     width: 95vw;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    height: 100vh;
+  }
+
+  .greenline {
+    width: 90vw;
+  }
+
+  .code--full {
+    display: none;
+  }
+
+  .code--compact {
+    display: block;
+  }
+
+  .header {
+    height: auto;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .headerh1,
+  .cardWrapper {
+    width: 330px;
+    min-width: auto;
+    box-sizing: border-box;
+  }
+
+  .headerh1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .headerh1 > span:first-child {
+    font-size: 1.4rem;
   }
 }
 

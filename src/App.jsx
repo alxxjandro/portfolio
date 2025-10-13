@@ -3,6 +3,7 @@ import { TypeAnimation } from 'react-type-animation'
 import CustomButton from './customButton'
 import Navbar from './navbar'
 import './styles.css'
+import TechStack from './techStack'
 
 const App = () => {
   const CURSOR_CLASS_NAME = 'custom-type-animation-cursor'
@@ -50,6 +51,7 @@ const App = () => {
         </h1>
         <HeaderCard />
       </div>
+      <TechStack />
     </>
   )
 }
