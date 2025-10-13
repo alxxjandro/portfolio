@@ -13,6 +13,11 @@ h4 {
   font-family: 'Roboto', sans-serif;
 }
 
+section,
+.header {
+  scroll-margin-top: 80px;
+}
+
 /* =========================================================
     NAVBAR
    ========================================================= */
@@ -261,8 +266,8 @@ body.dark .themeToggle svg {
   justify-content: center;
   text-align: center;
   padding: 0 1.5rem;
-  padding-top: 3rem;
-  margin-bottom: 16rem;
+  padding-top: 5rem;
+  margin-bottom: 10rem;
   gap: 1rem;
 }
 
@@ -361,6 +366,150 @@ body.dark .themeToggle svg {
 }
 
 /* =========================================================
+    PROJECTS SECTION 
+   ========================================================= */
+
+.projectsWrapper {
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.projectsTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+.projectsTitle span {
+  color: #22c55e;
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 1.5rem;
+  width: 75%;
+  max-width: 1000px;
+}
+
+.projectCard {
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(22, 197, 94, 0.25);
+  border-color: #22c55e;
+}
+
+.projectImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.projectContent {
+  flex: 1;
+  padding: 1rem 1.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 0.8rem;
+}
+
+.projectContent h2 {
+  font-size: 1.2rem;
+  color: #166534;
+}
+
+.projectContent p {
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.projectButtons {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.projectContent:not(:has(.projectButtons)) {
+  justify-content: flex-start;
+  padding-bottom: 2rem;
+}
+
+/* --- Modal --- */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.3s ease;
+  backdrop-filter: blur(6px); /* 👈 opcional: glass effect elegante */
+}
+
+.modalCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 360px;
+  text-align: center;
+  position: relative;
+  animation: popIn 0.25s ease;
+}
+
+.modalCard h3 {
+  font-size: 1.1rem;
+  color: #22c55e;
+}
+
+.modalCard p {
+  color: #374151;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.modalButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modalClose {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  border: none;
+  background: transparent;
+  color: #374151;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.modalClose:hover {
+  color: #22c55e;
+}
+/* =========================================================
     BUTTONS / TEXT ELEMENTS
    ========================================================= */
 .customButton {
@@ -370,6 +519,7 @@ body.dark .themeToggle svg {
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  max-height: 44px;
 }
 
 .customButton.primary {
@@ -389,6 +539,7 @@ body.dark .themeToggle svg {
   background-color: #ffffff;
   color: #16a34a;
   border: 2px solid #16a34a;
+  display: flex;
 }
 
 .customButton.secondary:hover {
@@ -490,6 +641,7 @@ body.dark .navbarContent > div > button:hover {
 body.dark .customButton.primary {
   border-color: #22c55e;
   background-color: #22c55e;
+  text-decoration: none;
 }
 
 body.dark .customButton.primary:hover {
@@ -499,6 +651,7 @@ body.dark .customButton.primary:hover {
 
 body.dark .customButton.secondary {
   background-color: transparent;
+  text-decoration: none;
   color: #22c55e;
   border-color: #22c55e;
 }
@@ -538,6 +691,41 @@ body.dark .string {
 
 body.dark .fileTextColor {
   color: #9ca3af;
+}
+
+body.dark .projectsTitle {
+  color: #e5e7eb;
+}
+
+body.dark .projectCard {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+body.dark .projectCard:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 12px rgba(22, 197, 94, 0.15);
+}
+
+body.dark .projectContent h2 {
+  color: #22c55e;
+}
+
+body.dark .projectContent p {
+  color: #d1d5db;
+}
+
+body.dark .modalCard {
+  background-color: #1f2937;
+  color: #e5e7eb;
+}
+
+body.dark .modalClose {
+  color: #e5e7eb;
+}
+
+body.dark .modalCard p {
+  color: #e5e7eb;
 }
 
 /* =========================================================
@@ -593,6 +781,26 @@ body.dark .fileTextColor {
   to {
     opacity: 1;
     transform: scaleX(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
@@ -668,6 +876,22 @@ body.dark .fileTextColor {
   .navbarContent {
     width: 100vw;
     gap: 0.2rem;
+  }
+
+  .techWrapper {
+    padding-top: 5rem;
+  }
+
+  .projectsWrapper {
+    max-width: 100vw;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .projectsGrid {
+    text-align: start;
+    width: 90vw;
   }
 
   .navbarContent > div > button {

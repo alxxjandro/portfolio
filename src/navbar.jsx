@@ -3,8 +3,8 @@ import { IoMoon } from 'react-icons/io5'
 import { MdSunny } from 'react-icons/md'
 import { PiGithubLogoFill } from 'react-icons/pi'
 
-const Navbar = () => {
-  const [theme, setTheme] = useState('light')
+const Navbar = ({ aboutRef, techStackRef, projectsRef, experienceRef }) => {
+  const [theme, setTheme] = useState('dark')
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
@@ -21,6 +21,10 @@ const Navbar = () => {
     document.body.className = newTheme
   }
 
+  const scrollToSection = (ref) => {
+    ref?.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="mainNavbar">
       <div className="navbarContent">
@@ -32,10 +36,14 @@ const Navbar = () => {
           </button>
         </div>
         <div>
-          <button>about</button>
-          <button>tech stack</button>
-          <button>projects</button>
-          <button>experience</button>
+          <button onClick={() => scrollToSection(aboutRef)}>about</button>
+          <button onClick={() => scrollToSection(techStackRef)}>
+            tech stack
+          </button>
+          <button onClick={() => scrollToSection(projectsRef)}>projects</button>
+          {/* <button onClick={() => scrollToSection(experienceRef)}>
+            experience
+          </button> */}
         </div>
         <div className="actionBtn">
           <button className="themeToggle" onClick={toggleTheme}>
