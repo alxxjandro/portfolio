@@ -57,7 +57,7 @@ body.dark .mainNavbar {
 }
 
 .navbarContent > div > button:hover {
-  color: #16a34a;
+  color: #22c55e;
   transform: translate(0px, -1px);
 }
 
@@ -220,7 +220,7 @@ body.dark .themeToggle svg {
 }
 
 .keyword {
-  color: #166534;
+  color: #22c55e;
 }
 
 .variable {
@@ -236,7 +236,7 @@ body.dark .themeToggle svg {
 }
 
 .property {
-  color: #16a34a;
+  color: #22c55e;
 }
 
 .string {
@@ -330,7 +330,7 @@ body.dark .themeToggle svg {
 .stackCard h3 {
   font-size: 1rem;
   margin-bottom: 1rem;
-  color: #166534;
+  color: #22c55e;
 }
 
 .stackIcons {
@@ -350,7 +350,7 @@ body.dark .themeToggle svg {
 .iconWrapper svg {
   width: 32px;
   height: 32px;
-  color: #16a34a;
+  color: #22c55e;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
@@ -432,7 +432,7 @@ body.dark .themeToggle svg {
 
 .projectContent h2 {
   font-size: 1.2rem;
-  color: #166534;
+  color: #22c55e;
 }
 
 .projectContent p {
@@ -509,6 +509,108 @@ body.dark .themeToggle svg {
 .modalClose:hover {
   color: #22c55e;
 }
+
+/* =========================================================
+    EXPERIENCE SECTION
+   ========================================================= */
+
+.experienceWrapper {
+  padding: 5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.experienceTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+}
+
+.experienceTitle span {
+  color: #22c55e;
+}
+
+/* --- Timeline Layout --- */
+.timeline {
+  position: relative;
+  margin-top: 2rem;
+  width: 80%;
+  max-width: 750px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  width: 3px;
+  height: 100%;
+  background: #22c55e66;
+  border-radius: 4px;
+}
+
+.timelineItem {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.timelineBullet {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  position: relative;
+  margin-left: 12px;
+  box-shadow: 0 0 0 4px #22c55e25;
+}
+
+.timelineContent {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  flex: 1;
+  transition: all 0.2s ease-in-out;
+}
+
+.timelineContent:hover {
+  border-color: #22c55e;
+  box-shadow: 0 4px 12px rgba(22, 197, 94, 0.15);
+  transform: translateY(-2px);
+}
+
+.timelineContent h3 {
+  color: #22c55e;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.timelineContent h3 span {
+  color: #374151;
+  font-weight: 500;
+}
+
+.timelineDate {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.timelineDescription {
+  color: #374151;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
 /* =========================================================
     BUTTONS / TEXT ELEMENTS
    ========================================================= */
@@ -523,34 +625,34 @@ body.dark .themeToggle svg {
 }
 
 .customButton.primary {
-  background-color: #16a34a;
+  background-color: #22c55e;
   color: #ffffff;
   border: 2px solid transparent;
 }
 
 .customButton.primary:hover {
   background-color: #ffffff;
-  color: #16a34a;
-  border: 2px solid #16a34a;
+  color: #22c55e;
+  border: 2px solid #22c55e;
   transform: translateY(-1px);
 }
 
 .customButton.secondary {
   background-color: #ffffff;
-  color: #16a34a;
-  border: 2px solid #16a34a;
+  color: #22c55e;
+  border: 2px solid #22c55e;
   display: flex;
 }
 
 .customButton.secondary:hover {
-  background-color: #16a34a;
+  background-color: #22c55e;
   color: #ffffff;
   transform: translateY(-1px);
 }
 
 .customButton.ghost {
   background-color: transparent;
-  color: #16a34a;
+  color: #22c55e;
   border: none;
 }
 
@@ -726,6 +828,31 @@ body.dark .modalClose {
 
 body.dark .modalCard p {
   color: #e5e7eb;
+}
+
+body.dark .timeline::before {
+  background: #22c55e33;
+}
+
+body.dark .timelineContent {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+body.dark .timelineContent:hover {
+  border-color: #22c55e;
+}
+
+body.dark .timelineContent h3 {
+  color: #22c55e;
+}
+
+body.dark .timelineContent h3 span {
+  color: #e5e7eb;
+}
+
+body.dark .timelineDescription {
+  color: #d1d5db;
 }
 
 /* =========================================================

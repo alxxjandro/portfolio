@@ -3,14 +3,16 @@ import { IoMoon } from 'react-icons/io5'
 import { MdSunny } from 'react-icons/md'
 import { PiGithubLogoFill } from 'react-icons/pi'
 
-const Navbar = ({ aboutRef, techStackRef, projectsRef, experienceRef }) => {
-  const [theme, setTheme] = useState('dark')
+const Navbar = ({ aboutRef, techRef, projectsRef, expRef }) => {
+  const [theme, setTheme] = useState('light')
 
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme')
     if (savedTheme) {
       setTheme(savedTheme)
       document.body.className = savedTheme
+    } else {
+      toggleTheme()
     }
   }, [])
 
@@ -37,13 +39,9 @@ const Navbar = ({ aboutRef, techStackRef, projectsRef, experienceRef }) => {
         </div>
         <div>
           <button onClick={() => scrollToSection(aboutRef)}>about</button>
-          <button onClick={() => scrollToSection(techStackRef)}>
-            tech stack
-          </button>
+          <button onClick={() => scrollToSection(techRef)}>tech stack</button>
+          <button onClick={() => scrollToSection(expRef)}>experience</button>
           <button onClick={() => scrollToSection(projectsRef)}>projects</button>
-          {/* <button onClick={() => scrollToSection(experienceRef)}>
-            experience
-          </button> */}
         </div>
         <div className="actionBtn">
           <button className="themeToggle" onClick={toggleTheme}>
