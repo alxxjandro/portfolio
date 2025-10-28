@@ -6,6 +6,7 @@ import Experience from './experience'
 import TechStack from './techStack'
 import Projects from './projects'
 import Navbar from './navbar'
+import myCV from './assets/Alonso-Alarcon-Resume.pdf'
 import './styles.css'
 
 const App = () => {
@@ -58,7 +59,7 @@ const App = () => {
               </a>
               <CustomButton
                 text="My CV"
-                onClick={() => window.open('/resume.pdf', '_blank')}
+                onClick={() => window.open(myCV, '_blank')}
                 variant="secondary"
               />
             </div>
