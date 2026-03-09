@@ -1,3 +1,4 @@
+import CursorWrapper from './CursorWrapper'
 import Contact from './components/Contact'
 import Landing from './components/Landing'
 import Projects from './components/Projects'
@@ -7,12 +8,14 @@ import './styles.css'
 
 const App = () => {
   return (
-    <Carrousel>
-      <Landing />
-      <Projects />
-      <Experience />
-      <Contact />
-    </Carrousel>
+    <CursorWrapper>
+      <Carrousel>
+        <Landing />
+        <Projects />
+        <Experience />
+        <Contact />
+      </Carrousel>
+    </CursorWrapper>
   )
 }
 

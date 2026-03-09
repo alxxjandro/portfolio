@@ -103,3 +103,50 @@
   line-height: 100px;
   font-size: 4rem;
 }
+
+/* Cursor Wrapper section */
+.cursor {
+  position: fixed;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+.cursor::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background: red;
+  border-radius: 50%;
+  position: absolute; 
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+/* Experience Section */
+
+.bulletpoint {
+  width: 200px;
+  height: 200px; 
+  border: solid 2px red;
+
+  position: relative;
+}
+
+.bulletpoint::before {
+  content: "";
+  width: 200px;
+  height: 2px;
+  background-color: blue;
+  position: absolute;
+}
+
+.bulletpoint::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: blue;
+  border-radius: 50%;
+}
