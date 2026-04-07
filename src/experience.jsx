@@ -1,56 +1,50 @@
-const Experience = () => {
-  const prevExperience = [
-    {
-      companyName: 'AutoZone BTSSC',
-      roleName: 'Frontend Developer Intern',
-      description:
-        'Maintaining, redesigning, and implementing scalable solutions for internal tools used daily.',
-      startDate: 'August 2025',
-      endDate: 'Currently',
-    },
-    {
-      companyName: 'Community Lab Alliance',
-      roleName: 'Frontend Developer Intern',
-      description:
-        'Worked on migrating the main website from Zoho Sites to a modular Next.js app deployed on Vercel.',
-      startDate: 'June 2025',
-      endDate: 'July 2025',
-    },
-    {
-      companyName: 'RedEmprende',
-      roleName: 'Frontend Developer Intern',
-      description:
-        'Developed an interactive diagnostic test used by 50+ monthly users with real-time charts and auto-generated PDF reports.',
-      startDate: 'April 2025',
-      endDate: 'June 2025',
-    },
-  ]
+const entries = [
+  {
+    company: 'AutoZone BTSSC',
+    role: 'Frontend Developer Intern',
+    description:
+      'Maintaining, redesigning, and implementing scalable solutions for internal tools used daily.',
+    start: 'Aug 2025',
+    end: 'Present',
+  },
+  {
+    company: 'Community Lab Alliance',
+    role: 'Frontend Developer Intern',
+    description:
+      'Migrated the main website from Zoho Sites to a modular Next.js app deployed on Vercel.',
+    start: 'Jun 2025',
+    end: 'Jul 2025',
+  },
+  {
+    company: 'RedEmprende',
+    role: 'Frontend Developer Intern',
+    description:
+      'Built an interactive diagnostic test used by 50+ monthly users with real-time charts and auto-generated PDF reports.',
+    start: 'Apr 2025',
+    end: 'Jun 2025',
+  },
+]
 
-  return (
-    <section id="experience" className="experienceWrapper">
-      <div className="techHeader">
-        <h1 style={{ textAlign: 'center' }}>
-          <span>Professional</span> Experience
-        </h1>
-      </div>
-      <div className="timeline">
-        {prevExperience.map((exp, index) => (
-          <div key={index} className="timelineItem">
-            <div className="timelineBullet" />
-            <div className="timelineContent">
-              <h3>
-                {exp.roleName} <span>@ {exp.companyName}</span>
-              </h3>
-              <p className="timelineDate">
-                {exp.startDate} — {exp.endDate}
-              </p>
-              <p className="timelineDescription">{exp.description}</p>
-            </div>
+const Experience = () => (
+  <section className="deep-section">
+    <div className="deep-light" aria-hidden="true" />
+
+    <div className="deep-inner">
+      <h2 className="deep-heading">Field Log</h2>
+      <p className="deep-subtitle">// EXPERIENCE · DEPTH −2 · SECTOR B</p>
+
+      <div className="wall-timeline">
+        {entries.map((entry, i) => (
+          <div key={i} className="wall-entry">
+            <p className="entry-date">{entry.start} — {entry.end}</p>
+            <p className="entry-role">{entry.role}</p>
+            <p className="entry-company">@ {entry.company}</p>
+            <p className="entry-desc">{entry.description}</p>
           </div>
         ))}
       </div>
-    </section>
-  )
-}
+    </div>
+  </section>
+)
 
 export default Experience
