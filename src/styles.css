@@ -207,7 +207,7 @@ a {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ABOUT — Notion style
+   ABOUT
 ═══════════════════════════════════════════════════════════ */
 .about {
   background: var(--color-dark-bg);
@@ -218,24 +218,64 @@ a {
 
 .about .container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
   align-items: start;
 }
 
-.about .section-label {
-  color: #444;
+.about .section-label { color: #444; }
+
+/* Left — statement */
+.about-statement {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: clamp(52px, 5.5vw, 80px);
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--color-dark-text);
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+
+.about-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #3A3A3A;
+}
+
+/* Right — property table */
+.about-right {
+  position: relative;
+  padding-top: 8px;
+}
+
+/* Large decorative section number */
+.about-section-num {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 160px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #1A1A1A;
+  user-select: none;
+  pointer-events: none;
 }
 
 .about-props {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid #1E1E1E;
 }
 
 .about-prop {
   display: grid;
-  grid-template-columns: 140px 1fr;
+  grid-template-columns: 120px 1fr;
   gap: 24px;
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid #1E1E1E;
   align-items: baseline;
 }
@@ -244,8 +284,7 @@ a {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.12em;
-  color: #3A3A3A;
-  text-transform: lowercase;
+  color: #333;
   padding-top: 2px;
 }
 
@@ -253,25 +292,27 @@ a {
   font-family: var(--font-body);
   font-weight: 300;
   font-size: 15px;
-  color: rgba(244, 243, 239, 0.75);
+  color: rgba(244, 243, 239, 0.78);
   line-height: 1.5;
 }
 
-.about-prop-val.accent {
-  color: rgba(244, 243, 239, 0.45);
+.about-prop-val.dim {
+  color: rgba(244, 243, 239, 0.38);
   font-size: 13px;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.02em;
 }
 
 .about-note {
-  margin-top: 44px;
+  position: relative;
+  z-index: 1;
+  margin-top: 40px;
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 15px;
-  color: rgba(244, 243, 239, 0.4);
+  font-size: 14px;
+  color: rgba(244, 243, 239, 0.3);
   line-height: 1.6;
   border-top: 1px solid #1E1E1E;
-  padding-top: 20px;
+  padding-top: 18px;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -400,80 +441,84 @@ a {
   scroll-margin-top: 60px;
 }
 
-.projects-list {
-  border-top: 1px solid var(--color-divider);
-}
-
-.project-entry {
+/* Staggered 2-col masonry — no cards, pure type */
+.proj-masonry {
   display: grid;
-  grid-template-columns: 48px 1fr;
-  gap: 32px;
-  padding: 40px 0;
-  border-bottom: 1px solid var(--color-divider);
-  transition: background 200ms ease, margin 200ms ease, padding 200ms ease;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 80px;
 }
 
-.project-entry:hover {
-  background: var(--color-hover-row);
-  margin: 0 calc(-1 * var(--page-gutter));
-  padding-left: var(--page-gutter);
-  padding-right: var(--page-gutter);
+/* Every even item is offset down — the stagger */
+.proj-item:nth-child(even) {
+  margin-top: 130px;
 }
 
-.project-number {
+.proj-item {
+  padding-bottom: 100px;
+}
+
+.proj-num {
+  display: block;
   font-family: var(--font-mono);
   font-size: 10px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: #BBBAB6;
-  padding-top: 8px;
-  transition: color 200ms ease;
+  margin-bottom: 20px;
+  transition: color 250ms ease;
 }
 
-.project-entry:hover .project-number {
-  color: var(--color-accent);
-}
+.proj-item:hover .proj-num { color: var(--color-accent); }
 
-.project-name {
-  display: block;
+.proj-name {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 32px;
-  letter-spacing: -0.01em;
+  font-size: clamp(42px, 4.2vw, 60px);
+  letter-spacing: -0.02em;
+  line-height: 1;
   color: var(--color-ink);
-  line-height: 1.1;
-  margin-bottom: 10px;
-  transition: transform 200ms ease;
+  margin-bottom: 28px;
+  transition: transform 250ms ease;
 }
 
-.project-entry:hover .project-name {
-  transform: translateX(8px);
+.proj-item:hover .proj-name { transform: translateX(6px); }
+
+/* Thin horizontal rule — acts as section separator within the item */
+.proj-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--color-divider);
+  margin-bottom: 24px;
+  transition: width 250ms ease;
 }
 
-.project-desc {
+.proj-item:hover .proj-rule { width: 64px; }
+
+.proj-meta { display: flex; flex-direction: column; gap: 10px; }
+
+.proj-award {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.proj-desc {
   font-family: var(--font-body);
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
+  line-height: 1.7;
   color: var(--color-ink-secondary);
-  line-height: 1.65;
-  margin-bottom: 14px;
+  max-width: 38ch;
 }
 
-.project-award {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
-  color: var(--color-accent);
-  margin-bottom: 12px;
-}
-
-.project-links {
+.proj-links {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   flex-wrap: wrap;
+  padding-top: 4px;
 }
 
-.project-link {
+.proj-link {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.08em;
@@ -481,11 +526,9 @@ a {
   transition: color 200ms ease;
 }
 
-.project-link:hover {
-  color: var(--color-ink);
-}
+.proj-link:hover { color: var(--color-ink); }
 
-.project-private {
+.proj-private {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.08em;
@@ -552,6 +595,12 @@ a {
     grid-template-columns: 1fr;
     gap: 12px;
   }
+
+  .proj-masonry {
+    column-gap: 48px;
+  }
+
+  .proj-item:nth-child(even) { margin-top: 80px; }
 }
 
 @media (max-width: 640px) {
@@ -584,17 +633,24 @@ a {
     margin-bottom: 52px;
   }
 
+  .about .container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-section-num { display: none; }
+
+  .about-statement { font-size: clamp(44px, 11vw, 64px); }
+
   .about-prop {
     grid-template-columns: 110px 1fr;
     gap: 16px;
   }
 
-  .project-entry {
-    grid-template-columns: 36px 1fr;
-    gap: 16px;
+  .proj-masonry {
+    grid-template-columns: 1fr;
   }
 
-  .project-name {
-    font-size: 26px;
-  }
+  .proj-item:nth-child(even) { margin-top: 0; }
+  .proj-item { padding-bottom: 64px; }
 }
