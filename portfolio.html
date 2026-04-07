@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alonso Alarcon — Frontend Developer</title>
+  <meta property="og:title" content="Alonso Alarcon — Frontend Developer" />
+  <meta name="theme-color" content="#F4F3EF" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=JetBrains+Mono:wght@400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── VARIABLES ─────────────────────────────────────────── */
+    :root {
+      --color-surface:       #F4F3EF;
+      --color-ink:           #111111;
+      --color-ink-secondary: #666666;
+      --color-accent:        #1C2B3A;
+      --color-dark-bg:       #0E0E0E;
+      --color-dark-text:     #F4F3EF;
+      --color-divider:       #E0DED8;
+      --color-hover-row:     #EDECE8;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-mono:    'JetBrains Mono', 'Courier New', monospace;
+      --font-body:    'Inter', system-ui, sans-serif;
+
+      --max-width:    1100px;
+      --section-pad:  140px;
+      --page-gutter:  40px;
+    }
+
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--color-surface);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      cursor: default;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ─── NOISE TEXTURE ──────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      pointer-events: none;
+      filter: url(#noise);
+      opacity: 0.035;
+      width: 200%;
+      height: 200%;
+    }
+
+    /* ─── SELECTION ──────────────────────────────────────────── */
+    ::selection { background: var(--color-accent); color: var(--color-dark-text); }
+
+    /* ─── LINKS ──────────────────────────────────────────────── */
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    /* ─── CONTAINER ──────────────────────────────────────────── */
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--page-gutter);
+    }
+
+    /* ─── SHARED SECTION ATOMS ───────────────────────────────── */
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--color-ink-secondary);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 24px;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(60px, 7vw, 96px);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 80px;
+    }
+
+    /* ─── SVG NOISE (hidden, defs only) ──────────────────────── */
+    svg.noise-defs {
+      position: absolute;
+      width: 0;
+      height: 0;
+      overflow: hidden;
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 60px;
+      padding: 0 var(--page-gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: transparent;
+      transition: background 250ms ease, backdrop-filter 250ms ease;
+    }
+
+    nav.scrolled {
+      background: rgba(244, 243, 239, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-brand {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: var(--color-ink-secondary);
+      transition: color 200ms ease;
+    }
+
+    .nav-links a:hover { color: var(--color-ink); }
+
+
+    /* ════════════════════════════════════════════════════════════
+       HERO
+    ════════════════════════════════════════════════════════════ */
+    #hero {
+      height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 13vh;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 var(--page-gutter);
+    }
+
+    .hero-name-first {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: clamp(72px, 8.5vw, 110px);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--color-ink);
+    }
+
+    .hero-name-last {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: clamp(72px, 8.5vw, 110px);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--color-ink);
+      margin-left: 60px;
+    }
+
+    .hero-tagline {
+      margin-top: 40px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-secondary);
+    }
+
+    .hero-aside {
+      position: absolute;
+      bottom: 40px;
+      right: var(--page-gutter);
+      writing-mode: vertical-rl;
+      transform: rotate(-180deg);
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--color-ink-secondary);
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════════════════════════════ */
+    #about {
+      background: var(--color-dark-bg);
+      color: var(--color-dark-text);
+      padding: var(--section-pad) 0;
+    }
+
+    #about .container {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    #about .section-label {
+      color: #555;
+    }
+
+    .code-filename {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: #555;
+      margin-bottom: 20px;
+    }
+
+    .code-block {
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      line-height: 1.9;
+      white-space: pre;
+      overflow-x: auto;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    /* Syntax tokens */
+    .tok-keyword  { color: #6B7FD4; }
+    .tok-string   { color: #F4F3EF; }
+    .tok-key      { color: #9CA8B4; }
+    .tok-punct    { color: #444; }
+    .tok-bracket  { color: #666; }
+
+    .about-note {
+      margin-top: 44px;
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      color: rgba(244, 243, 239, 0.55);
+      line-height: 1.6;
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       TECH
+    ════════════════════════════════════════════════════════════ */
+    #tech {
+      background: var(--color-surface);
+      padding: var(--section-pad) 0;
+    }
+
+    .tech-groups {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .tech-group {
+      flex: 1;
+      padding: 0 40px;
+      border-left: 1px solid var(--color-divider);
+    }
+
+    .tech-group:first-child {
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .tech-group-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-ink-secondary);
+      margin-bottom: 20px;
+    }
+
+    .tech-group ul {
+      list-style: none;
+    }
+
+    .tech-group ul li {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--color-ink-secondary);
+    }
+
+    .tech-group.priority .tech-group-label,
+    .tech-group.priority ul li {
+      color: var(--color-accent);
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       EXPERIENCE
+    ════════════════════════════════════════════════════════════ */
+    #experience {
+      background: var(--color-surface);
+      padding: var(--section-pad) 0;
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .experience-list {
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .experience-entry {
+      display: grid;
+      grid-template-columns: 30% 70%;
+      gap: 48px;
+      padding: 44px 0;
+      border-bottom: 1px solid var(--color-divider);
+      transition: background 200ms ease, padding 200ms ease, margin 200ms ease;
+    }
+
+    .experience-entry:hover {
+      background: var(--color-hover-row);
+      margin: 0 calc(-1 * var(--page-gutter));
+      padding-left: var(--page-gutter);
+      padding-right: var(--page-gutter);
+    }
+
+    .exp-company {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .exp-period {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-secondary);
+    }
+
+    .exp-role {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-ink-secondary);
+      margin-bottom: 12px;
+    }
+
+    .exp-desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 16px;
+      color: var(--color-ink);
+      line-height: 1.7;
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       PROJECTS
+    ════════════════════════════════════════════════════════════ */
+    #projects {
+      background: var(--color-surface);
+      padding: var(--section-pad) 0;
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .projects-list {
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .project-entry {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 32px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--color-divider);
+      transition: background 200ms ease, padding 200ms ease, margin 200ms ease;
+    }
+
+    .project-entry:hover {
+      background: var(--color-hover-row);
+      margin: 0 calc(-1 * var(--page-gutter));
+      padding-left: var(--page-gutter);
+      padding-right: var(--page-gutter);
+    }
+
+    .project-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: #BBBAB6;
+      padding-top: 8px;
+      transition: color 200ms ease;
+    }
+
+    .project-entry:hover .project-number {
+      color: var(--color-accent);
+    }
+
+    .project-name {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      color: var(--color-ink);
+      line-height: 1.1;
+      margin-bottom: 10px;
+      transition: transform 200ms ease;
+    }
+
+    .project-entry:hover .project-name {
+      transform: translateX(8px);
+    }
+
+    .project-desc {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--color-ink-secondary);
+      line-height: 1.65;
+      margin-bottom: 14px;
+    }
+
+    .project-award {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .project-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-secondary);
+      cursor: pointer;
+      transition: color 200ms ease;
+    }
+
+    .project-link:hover { color: var(--color-ink); }
+
+    .project-private {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: #BBBAB6;
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════════════════════════ */
+    footer {
+      background: var(--color-dark-bg);
+      padding: 80px var(--page-gutter);
+      text-align: center;
+    }
+
+    .footer-name {
+      font-family: var(--font-display);
+      font-weight: 300;
+      font-size: 32px;
+      letter-spacing: -0.01em;
+      color: var(--color-dark-text);
+      margin-bottom: 16px;
+    }
+
+    .footer-meta {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: #444;
+    }
+
+
+    /* ════════════════════════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      :root {
+        --section-pad: 100px;
+        --page-gutter: 32px;
+      }
+
+      #about .container {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .tech-groups {
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .tech-group {
+        border-left: none;
+        border-top: 1px solid var(--color-divider);
+        padding: 28px 0 0 0;
+        margin-bottom: 28px;
+      }
+
+      .tech-group:first-child {
+        border-top: none;
+        padding-top: 0;
+      }
+
+      .experience-entry {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      :root {
+        --section-pad: 80px;
+        --page-gutter: 24px;
+      }
+
+      nav { padding: 0 24px; }
+
+      .nav-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+      }
+
+      .hero-name-first,
+      .hero-name-last { font-size: clamp(48px, 13vw, 72px); }
+
+      .hero-name-last { margin-left: 28px; }
+
+      .hero-aside { display: none; }
+
+      .section-heading { font-size: clamp(48px, 12vw, 72px); }
+
+      .code-block { font-size: 11.5px; }
+
+      .project-entry {
+        grid-template-columns: 36px 1fr;
+        gap: 16px;
+      }
+
+      .project-name { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SVG Noise Filter Definition -->
+  <svg class="noise-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <filter id="noise">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+    </defs>
+  </svg>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       NAV
+  ═══════════════════════════════════════════════════════════════ -->
+  <nav id="main-nav" aria-label="Main navigation">
+    <a href="#hero" class="nav-brand">AA</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#tech">Tech</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="https://github.com/alxxjandro" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="hero" aria-label="Hero">
+    <div class="hero-content">
+      <span class="hero-name-first">Alonso</span>
+      <span class="hero-name-last">Alarcon.</span>
+      <p class="hero-tagline">frontend developer&nbsp;&nbsp;·&nbsp;&nbsp;student&nbsp;&nbsp;·&nbsp;&nbsp;chihuahua, mx</p>
+    </div>
+    <span class="hero-aside" aria-hidden="true">PORTFOLIO 2025</span>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ABOUT
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="about" aria-label="About">
+    <div class="container">
+
+      <div class="about-left">
+        <span class="section-label">// me.js</span>
+      </div>
+
+      <div class="about-right">
+        <p class="code-filename">me.js</p>
+        <pre class="code-block" aria-label="Code object describing Alonso"><code><span class="tok-keyword">const</span> myInfo <span class="tok-punct">=</span> <span class="tok-bracket">{</span>
+  <span class="tok-key">name</span><span class="tok-punct">:</span>         <span class="tok-string">'Alonso'</span><span class="tok-punct">,</span>
+  <span class="tok-key">isStudent</span><span class="tok-punct">:</span>    <span class="tok-string">'true'</span><span class="tok-punct">,</span>
+  <span class="tok-key">favoriteRole</span><span class="tok-punct">:</span> <span class="tok-string">'Frontend Developer'</span><span class="tok-punct">,</span>
+  <span class="tok-key">focuses</span><span class="tok-punct">:</span>      <span class="tok-bracket">[</span><span class="tok-string">'web-dev'</span><span class="tok-punct">,</span> <span class="tok-string">'mobile'</span><span class="tok-punct">,</span> <span class="tok-string">'design'</span><span class="tok-bracket">]</span><span class="tok-punct">,</span>
+  <span class="tok-key">favoriteFood</span><span class="tok-punct">:</span> <span class="tok-string">'pasta'</span><span class="tok-punct">,</span>
+  <span class="tok-key">hobbies</span><span class="tok-punct">:</span>      <span class="tok-bracket">[</span><span class="tok-string">'running'</span><span class="tok-punct">,</span> <span class="tok-string">'cooking'</span><span class="tok-punct">,</span> <span class="tok-string">'coding'</span><span class="tok-bracket">]</span><span class="tok-punct">,</span>
+<span class="tok-bracket">}</span></code></pre>
+        <p class="about-note">Currently open to internships and collaborations.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TECH
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="tech" aria-label="Tech stack">
+    <div class="container">
+      <span class="section-label">// PIPE SYSTEM · FLOOR &#8722;1 · UTILITY LAYER</span>
+      <h2 class="section-heading">Infrastructure</h2>
+
+      <div class="tech-groups">
+
+        <div class="tech-group priority">
+          <p class="tech-group-label">Web Development</p>
+          <ul>
+            <li>React</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>Tailwind CSS</li>
+            <li>Jest</li>
+            <li>Vite</li>
+          </ul>
+        </div>
+
+        <div class="tech-group">
+          <p class="tech-group-label">Languages</p>
+          <ul>
+            <li>TypeScript</li>
+            <li>JavaScript</li>
+            <li>C++</li>
+            <li>Python</li>
+          </ul>
+        </div>
+
+        <div class="tech-group">
+          <p class="tech-group-label">Databases</p>
+          <ul>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>T-SQL</li>
+          </ul>
+        </div>
+
+        <div class="tech-group">
+          <p class="tech-group-label">Tools</p>
+          <ul>
+            <li>Git</li>
+            <li>Docker</li>
+            <li>Linux</li>
+            <li>Figma</li>
+            <li>Postman</li>
+            <li>ESLint</li>
+            <li>Prettier</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       EXPERIENCE
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="experience" aria-label="Experience">
+    <div class="container">
+      <span class="section-label">// EXPERIENCE · DEPTH &#8722;2 · SECTOR B</span>
+      <h2 class="section-heading">Field Log</h2>
+
+      <div class="experience-list">
+
+        <div class="experience-entry">
+          <div class="exp-left">
+            <p class="exp-company">AutoZone BTSSC</p>
+            <p class="exp-period">Aug 2025 &#8212; Present</p>
+          </div>
+          <div class="exp-right">
+            <p class="exp-role">Frontend Developer Intern</p>
+            <p class="exp-desc">Maintaining, redesigning, and implementing scalable solutions for internal tools used daily.</p>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <div class="exp-left">
+            <p class="exp-company">Community Lab Alliance</p>
+            <p class="exp-period">Jun 2025 &#8212; Jul 2025</p>
+          </div>
+          <div class="exp-right">
+            <p class="exp-role">Frontend Developer Intern</p>
+            <p class="exp-desc">Migrated the main website from Zoho Sites to a modular Next.js app deployed on Vercel.</p>
+          </div>
+        </div>
+
+        <div class="experience-entry">
+          <div class="exp-left">
+            <p class="exp-company">RedEmprende</p>
+            <p class="exp-period">Apr 2025 &#8212; Jun 2025</p>
+          </div>
+          <div class="exp-right">
+            <p class="exp-role">Frontend Developer Intern</p>
+            <p class="exp-desc">Built an interactive diagnostic test used by 50+ monthly users with real-time charts and auto-generated PDF reports.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       PROJECTS
+  ═══════════════════════════════════════════════════════════════ -->
+  <section id="projects" aria-label="Projects">
+    <div class="container">
+      <span class="section-label">// SELECTED WORK</span>
+      <h2 class="section-heading">Projects</h2>
+
+      <div class="projects-list">
+
+        <!-- 01 — ReBreath -->
+        <div class="project-entry">
+          <span class="project-number">01</span>
+          <div class="project-body">
+            <span class="project-name">ReBreath</span>
+            <p class="project-desc">Web app using NASA satellite data, OpenWeather, and Gemini AI to deliver personalized air quality and health insights.</p>
+            <span class="project-award">&#9733; NASA Space Apps 2025 &#8212; Global Nominee</span>
+            <div class="project-links">
+              <a href="https://hilarious-stroopwafel-c91aef.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">Live &#8599;</a>
+              <a href="https://github.com/alxxjandro/frontendspaceapps/" target="_blank" rel="noopener noreferrer" class="project-link">GitHub &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 02 — zpinn. -->
+        <div class="project-entry">
+          <span class="project-number">02</span>
+          <div class="project-body">
+            <span class="project-name">zpinn.</span>
+            <p class="project-desc">Modern vinyl record mock store focused on design and user experience. Fully responsive React app with smooth animations.</p>
+            <div class="project-links">
+              <a href="https://zpinn.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">Live &#8599;</a>
+              <a href="https://github.com/alxxjandro/zpinn." target="_blank" rel="noopener noreferrer" class="project-link">GitHub &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 03 — CV Builder -->
+        <div class="project-entry">
+          <span class="project-number">03</span>
+          <div class="project-body">
+            <span class="project-name">CV Builder</span>
+            <p class="project-desc">Interactive resume generator built with React. Lets users create, preview, and export personalized CVs as PDF.</p>
+            <div class="project-links">
+              <a href="https://alxscvbuilder.netlify.app/" target="_blank" rel="noopener noreferrer" class="project-link">Live &#8599;</a>
+              <a href="https://github.com/alxxjandro/cvbuilder" target="_blank" rel="noopener noreferrer" class="project-link">GitHub &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 — HighPoint Ecoas -->
+        <div class="project-entry">
+          <span class="project-number">04</span>
+          <div class="project-body">
+            <span class="project-name">HighPoint Ecoas</span>
+            <p class="project-desc">Full-stack platform for managing teacher surveys. Includes auth, file uploads, and data dashboards built with React and Express.</p>
+            <div class="project-links">
+              <a href="https://github.com/CLA-TC2005B-FJ2025/equipo5-prototipo" target="_blank" rel="noopener noreferrer" class="project-link">GitHub &#8599;</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 05 — CasaHogar -->
+        <div class="project-entry">
+          <span class="project-number">05</span>
+          <div class="project-body">
+            <span class="project-name">CasaHogar</span>
+            <p class="project-desc">React Native + Node.js app for a local shelter. Handles inventory, donations, and multi-user access to improve management.</p>
+            <div class="project-links">
+              <span class="project-private">Private project</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════════════════════ -->
+  <footer>
+    <p class="footer-name">Alonso Alarcon</p>
+    <p class="footer-meta">alxxjandro&nbsp;&nbsp;&#183;&nbsp;&nbsp;github.com/alxxjandro&nbsp;&nbsp;&#183;&nbsp;&nbsp;2025</p>
+  </footer>
+
+
+  <script>
+    (function () {
+      const nav = document.getElementById('main-nav');
+
+      function updateNav() {
+        if (window.scrollY > 20) {
+          nav.classList.add('scrolled');
+        } else {
+          nav.classList.remove('scrolled');
+        }
+      }
+
+      window.addEventListener('scroll', updateNav, { passive: true });
+      updateNav();
+    })();
+  </script>
+
+</body>
+</html>

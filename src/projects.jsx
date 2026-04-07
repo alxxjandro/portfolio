@@ -1,152 +1,85 @@
-import { useState } from 'react'
-import { FiExternalLink, FiGithub } from 'react-icons/fi'
-import ReBreath from './assets/ReBreath.png'
-import CasaHogar from './assets/CasaHogar.png'
-import Highpoint from './assets/Highpoint.png'
-import Zpinn from './assets/zpinn.png'
-import CVBuilder from './assets/cvbuilder.png'
-
-const ProjectsInfo = [
+const projects = [
   {
     name: 'ReBreath',
-    description:
-      'Winner of NASA Space Apps 2025 (Global Nominee). Web app that uses NASA satellite data, OpenWeather, and Gemini AI to deliver personalized air quality and health insights.',
-    frontend: 'https://github.com/alxxjandro/frontendspaceapps/',
-    backend: 'https://github.com/CLA-TC2005B-FJ2025/CRUD-Equipo5',
-    link: 'https://hilarious-stroopwafel-c91aef.netlify.app/',
-    photoUrl: ReBreath,
+    desc: 'Web app using NASA satellite data, OpenWeather, and Gemini AI to deliver personalized air quality and health insights.',
+    award: 'NASA Space Apps 2025 \u2014 Global Nominee',
+    links: [
+      { label: 'Live \u2197', href: 'https://hilarious-stroopwafel-c91aef.netlify.app/' },
+      { label: 'Frontend \u2197', href: 'https://github.com/alxxjandro/frontendspaceapps/' },
+      { label: 'Backend \u2197', href: 'https://github.com/CLA-TC2005B-FJ2025/CRUD-Equipo5' },
+    ],
   },
   {
     name: 'zpinn.',
-    description:
-      'Modern vinyl record mock store focused on design and user experience. Fully responsive React app with smooth animations and a clean aesthetic.',
-    frontend: 'https://github.com/alxxjandro/zpinn.',
-    backend: '',
-    link: 'https://zpinn.netlify.app/',
-    photoUrl: Zpinn,
+    desc: 'Modern vinyl record mock store focused on design and user experience. Fully responsive React app with smooth animations.',
+    links: [
+      { label: 'Live \u2197', href: 'https://zpinn.netlify.app/' },
+      { label: 'GitHub \u2197', href: 'https://github.com/alxxjandro/zpinn.' },
+    ],
   },
   {
     name: 'CV Builder',
-    description:
-      'Interactive resume generator built with React. Lets users create, preview, and export personalized CVs as PDF.',
-    frontend: 'https://github.com/alxxjandro/cvbuilder',
-    backend: '',
-    link: 'https://alxscvbuilder.netlify.app/',
-    photoUrl: CVBuilder,
+    desc: 'Interactive resume generator built with React. Lets users create, preview, and export personalized CVs as PDF.',
+    links: [
+      { label: 'Live \u2197', href: 'https://alxscvbuilder.netlify.app/' },
+      { label: 'GitHub \u2197', href: 'https://github.com/alxxjandro/cvbuilder' },
+    ],
   },
   {
     name: 'HighPoint Ecoas',
-    description:
-      'Full-stack platform for managing teacher surveys. Includes auth, file uploads, and data dashboards built with React and Express.',
-    frontend: 'https://github.com/CLA-TC2005B-FJ2025/equipo5-prototipo',
-    backend: 'https://github.com/CLA-TC2005B-FJ2025/CRUD-Equipo5',
-    link: '',
-    photoUrl: Highpoint,
+    desc: 'Full-stack platform for managing teacher surveys. Includes auth, file uploads, and data dashboards built with React and Express.',
+    links: [
+      { label: 'Frontend \u2197', href: 'https://github.com/CLA-TC2005B-FJ2025/equipo5-prototipo' },
+      { label: 'Backend \u2197', href: 'https://github.com/CLA-TC2005B-FJ2025/CRUD-Equipo5' },
+    ],
   },
   {
     name: 'CasaHogar',
-    description:
-      'React Native + Node.js app for a local shelter. Handles inventory, donations, and multi-user access to improve management.',
-    frontend: '',
-    backend: '',
-    link: '',
-    photoUrl: CasaHogar,
+    desc: 'React Native + Node.js app for a local shelter. Handles inventory, donations, and multi-user access to improve management.',
+    private: true,
   },
 ]
 
-const Projects = () => {
-  const [modalProject, setModalProject] = useState(null)
-
-  const handleGithubClick = (project) => {
-    if (project.frontend && project.backend) {
-      setModalProject(project)
-    } else {
-      const repo = project.frontend || project.backend
-      if (repo) window.open(repo, '_blank')
-    }
-  }
-
-  const closeModal = () => setModalProject(null)
-
-  return (
-    <section id="projects" className="projectsWrapper">
-      <div className="techHeader">
-        <h1 style={{ textAlign: 'center' }}>
-          Featured <span>Projects</span>
-        </h1>
-        <p>
-          A few of the projects that pushed me to learn, experiment, and grow as
-          a developer.
-        </p>
-        <div className="greenDivider"></div>
-      </div>
-      <div className="projectsGrid">
-        {ProjectsInfo.map((project) => (
-          <div key={project.name} className="projectCard">
-            <img
-              src={project.photoUrl}
-              alt={project.name}
-              className="projectImage"
-            />
-            <div className="projectContent">
-              <h2>{project.name}</h2>
-              <p>{project.description}</p>
-
-              {(project.link || project.frontend || project.backend) && (
-                <div className="projectButtons">
-                  {project.link && (
-                    <button
-                      className="customButton primary"
-                      onClick={() => window.open(project.link, '_blank')}
-                    >
-                      <FiExternalLink /> Live
-                    </button>
-                  )}
-
-                  {(project.frontend || project.backend) && (
-                    <button
-                      className="customButton secondary"
-                      onClick={() => handleGithubClick(project)}
-                    >
-                      <FiGithub size={18} />
-                    </button>
-                  )}
-                </div>
+const Projects = () => (
+  <section id="projects" className="projects">
+    <div className="container">
+      <span className="section-label">// SELECTED WORK</span>
+      <h2 className="section-heading">Projects</h2>
+      <div className="projects-list">
+        {projects.map(({ name, desc, award, links, private: isPrivate }, i) => (
+          <div key={name} className="project-entry">
+            <span className="project-number">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+            <div className="project-body">
+              <span className="project-name">{name}</span>
+              <p className="project-desc">{desc}</p>
+              {award && (
+                <span className="project-award">&#9733; {award}</span>
               )}
+              <div className="project-links">
+                {isPrivate ? (
+                  <span className="project-private">Private project</span>
+                ) : (
+                  links.map(({ label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                    >
+                      {label}
+                    </a>
+                  ))
+                )}
+              </div>
             </div>
           </div>
         ))}
       </div>
-
-      {modalProject && (
-        <div className="modalOverlay" onClick={closeModal}>
-          <div className="modalCard" onClick={(e) => e.stopPropagation()}>
-            <h3>Select a repository</h3>
-            <p>{modalProject.name}</p>
-            <div className="modalButtons">
-              <a
-                href={modalProject.frontend}
-                target="_blank"
-                className="customButton primary"
-              >
-                Frontend
-              </a>
-              <a
-                href={modalProject.backend}
-                target="_blank"
-                className="customButton secondary"
-              >
-                Backend
-              </a>
-            </div>
-            <button className="modalClose" onClick={closeModal}>
-              ✕
-            </button>
-          </div>
-        </div>
-      )}
-    </section>
-  )
-}
+    </div>
+  </section>
+)
 
 export default Projects

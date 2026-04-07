@@ -1,83 +1,58 @@
-import HeaderCard from './headerCard'
-import { useRef } from 'react'
-import { TypeAnimation } from 'react-type-animation'
-import CustomButton from './customButton'
-import Experience from './experience'
-import TechStack from './techStack'
-import Projects from './projects'
 import Navbar from './navbar'
-import myCV from './assets/Alonso-Alarcon-Resume.pdf'
+import About from './about'
+import TechStack from './techStack'
+import Experience from './experience'
+import Projects from './projects'
 import './styles.css'
 
-const App = () => {
-  const CURSOR_CLASS_NAME = 'custom-type-animation-cursor'
+const App = () => (
+  <>
+    {/* SVG Noise Filter */}
+    <svg
+      style={{ position: 'absolute', width: 0, height: 0, overflow: 'hidden' }}
+      aria-hidden="true"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <defs>
+        <filter id="noise">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.65"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+      </defs>
+    </svg>
 
-  const aboutRef = useRef(null)
-  const techRef = useRef(null)
-  const projectsRef = useRef(null)
-  const expRef = useRef(null)
+    <Navbar />
 
-  return (
-    <>
-      <Navbar
-        aboutRef={aboutRef}
-        techRef={techRef}
-        projectsRef={projectsRef}
-        expRef={expRef}
-      />
-      <div ref={aboutRef} className="header">
-        <h1>
-          <div className="headerh1">
-            <span>Hi I'm </span>
-            <span className="typing">
-              <TypeAnimation
-                cursor={false}
-                className={CURSOR_CLASS_NAME}
-                speed={50}
-                deletionSpeed={55}
-                wrapper="span"
-                sequence={[
-                  (el) => el.classList.add(CURSOR_CLASS_NAME),
-                  'Alonso',
-                  2000,
-                  'a Software Developer',
-                  2000,
-                  'a CS Student',
-                  2000,
-                  'Alonso :)',
-                  (el) => el.classList.remove(CURSOR_CLASS_NAME),
-                ]}
-              />
-            </span>
-            <p className="subHeader">Always learning, always building.</p>
-            <div className="headerActions">
-              <a
-                href="https://www.linkedin.com/in/alejandro-a-53b4ab294/"
-                target="_blank"
-              >
-                <CustomButton text="Get in touch" />
-              </a>
-              <CustomButton
-                text="My CV"
-                onClick={() => window.open(myCV, '_blank')}
-                variant="secondary"
-              />
-            </div>
-          </div>
-        </h1>
-        <HeaderCard />
+    {/* Hero */}
+    <section id="hero" className="hero">
+      <div className="hero-content">
+        <span className="hero-name-first">Alonso</span>
+        <span className="hero-name-last">Alarcon.</span>
+        <p className="hero-tagline">
+          frontend developer&nbsp;&nbsp;&middot;&nbsp;&nbsp;student&nbsp;&nbsp;&middot;&nbsp;&nbsp;chihuahua, mx
+        </p>
       </div>
-      <div ref={techRef}>
-        <TechStack />
-      </div>
-      <div ref={expRef}>
-        <Experience />
-      </div>
-      <div ref={projectsRef}>
-        <Projects />
-      </div>
-    </>
-  )
-}
+      <span className="hero-aside" aria-hidden="true">PORTFOLIO 2025</span>
+    </section>
+
+    <About />
+    <TechStack />
+    <Experience />
+    <Projects />
+
+    {/* Footer */}
+    <footer className="footer">
+      <p className="footer-name">Alonso Alarcon</p>
+      <p className="footer-meta">
+        alxxjandro&nbsp;&nbsp;&middot;&nbsp;&nbsp;github.com/alxxjandro&nbsp;&nbsp;&middot;&nbsp;&nbsp;2025
+      </p>
+    </footer>
+  </>
+)
 
 export default App
