@@ -1,7 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(npx eslint *)",
+      "Read(//Applications/Google Chrome.app/Contents/MacOS/**)",
+      "Read(//Applications/Chromium.app/Contents/MacOS/**)",
+      "Bash(node *)",
+      "Bash(npm init *)",
+      "Bash(npm i *)",
+      "Bash(echo \"install exit: $?\")",
+      "WebSearch"
     ]
   }
 }

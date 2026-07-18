@@ -1,29 +1,34 @@
+/**
+ * Alonso Alarcon
+ * Portfolio - 2026
+ */
+
 const entries = [
   {
     company: 'AutoZone BTSSC',
-    period: 'Aug 2025 \u2014 Present',
-    role: 'Frontend Developer Intern',
-    desc: 'Maintaining, redesigning, and implementing scalable solutions for internal tools used daily.',
+    period: 'Aug 2025 - Present',
+    role: 'Software Engineer Intern',
+    desc: 'Maintaining and redesigning internal tools used daily, migrating services to Google Cloud (Cloud Run, Cloud SQL) and standing up CI/CD pipelines for reliable releases.',
   },
   {
     company: 'Community Lab Alliance',
-    period: 'Jun 2025 \u2014 Jul 2025',
-    role: 'Frontend Developer Intern',
-    desc: 'Migrated the main website from Zoho Sites to a modular Next.js app deployed on Vercel.',
+    period: 'Jun 2025 - Jul 2025',
+    role: 'Software Developer Intern',
+    desc: 'Migrated the main website from Zoho Sites to a modular Next.js application deployed on Vercel.',
   },
   {
     company: 'RedEmprende',
-    period: 'Apr 2025 \u2014 Jun 2025',
-    role: 'Frontend Developer Intern',
-    desc: 'Built an interactive diagnostic test used by 50+ monthly users with real-time charts and auto-generated PDF reports.',
+    period: 'Apr 2025 - Jun 2025',
+    role: 'Software Developer Intern',
+    desc: 'Built an interactive diagnostic tool used by 50+ monthly users, with real-time charts and auto-generated PDF reports.',
   },
 ]
 
 const Experience = () => (
   <section id="experience" className="experience">
     <div className="container">
-      <span className="section-label">// EXPERIENCE · DEPTH &#8722;2 · SECTOR B</span>
-      <h2 className="section-heading">Field Log</h2>
+      <span className="section-label">// Experience</span>
+      <h2 className="section-heading">Experience</h2>
       <div className="experience-list">
         {entries.map(({ company, period, role, desc }) => (
           <div key={company} className="experience-entry">
