@@ -5,15 +5,15 @@
 
 import { useState } from 'react'
 
-import currioEditor from './assets/currio2.png'
-import currioLanding from './assets/currio1.png'
-import currioTemplates from './assets/currio3.png'
-import munCommittees from './assets/mun2.png'
-import munLanding from './assets/mun1.png'
-import munLogin from './assets/mun3.png'
-import zpinnCart from './assets/zpinn3.png'
-import zpinnLanding from './assets/zpinn1.png'
-import zpinnShop from './assets/zpinn2.png'
+import currioEditor from './assets/currio2.webp'
+import currioLanding from './assets/currio1.webp'
+import currioTemplates from './assets/currio3.webp'
+import munCommittees from './assets/mun2.webp'
+import munLanding from './assets/mun1.webp'
+import munLogin from './assets/mun3.webp'
+import zpinnCart from './assets/zpinn3.webp'
+import zpinnLanding from './assets/zpinn1.webp'
+import zpinnShop from './assets/zpinn2.webp'
 
 const projects = [
   {
