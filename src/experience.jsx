@@ -5,21 +5,21 @@
 
 const entries = [
   {
-    company: 'AutoZone BTSSC',
-    period: 'Aug 2025 - Present',
+    company: 'Oracle',
+    period: 'July 2026 - Present',
     role: 'Software Engineer Intern',
-    desc: 'Maintaining and redesigning internal tools used daily, migrating services to Google Cloud (Cloud Run, Cloud SQL) and standing up CI/CD pipelines for reliable releases.',
+    desc: 'Focused on agentic development with Oracle Cloud Infrastructure, completing OCI training on agent frameworks and applying it to internal tooling.',
   },
   {
-    company: 'Community Lab Alliance',
-    period: 'Jun 2025 - Jul 2025',
-    role: 'Software Developer Intern',
-    desc: 'Migrated the main website from Zoho Sites to a modular Next.js application deployed on Vercel.',
+    company: 'AutoZone BTSSC',
+    period: 'Aug 2025 - July 2026',
+    role: 'Software Engineer Intern',
+    desc: 'Migrated two enterprise apps from PCF to GCP and their databases from MySQL to PostgreSQL, cutting costs by 7%. Rebuilt an internal 360-degree evaluation platform that scaled to production use across three countries. Earning 2 awards in the process',
   },
   {
     company: 'RedEmprende',
     period: 'Apr 2025 - Jun 2025',
-    role: 'Software Developer Intern',
+    role: 'Frontend Developer Intern',
     desc: 'Built an interactive diagnostic tool used by 50+ monthly users, with real-time charts and auto-generated PDF reports.',
   },
 ]
