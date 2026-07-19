@@ -775,6 +775,18 @@ a {
     border-left: none;
   }
 
+  /* el último grupo queda solo en la fila: lo estiramos y
+     partimos sus items en 2 columnas para no romper la retícula */
+  .tech-group:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .tech-group:last-child:nth-child(odd) ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+  }
+
   .experience-entry {
     grid-template-columns: 1fr;
     gap: 12px;
